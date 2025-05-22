@@ -8,19 +8,19 @@ permissions:
 
 jobs:
   super-linter:
-    name: project
+    name: Lint Code
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run Super-Linter
+      - name: Run Super-Linter via Docker
         run: |
           docker run \
             -e RUN_LOCAL=true \
             -e DEFAULT_BRANCH=main \
             -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
-            -v ${{ github.workspace }}:/tmp/lint \
+            -v "${{ github.workspace }}:/tmp/lint" \
             -w /tmp/lint \
             github/super-linter:v6.4.1
