@@ -1,4 +1,4 @@
-name: linter
+name: Super-Linter
 
 on: [push]
 
@@ -7,7 +7,7 @@ permissions:
   statuses: write
 
 jobs:
-  lint:
+  super-linter:
     name: project
     runs-on: ubuntu-latest
 
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run linter
+      - name: Run Super-Linter
         run: |
           docker run \
             -e RUN_LOCAL=true \
